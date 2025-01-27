@@ -77,7 +77,7 @@ Users
 
 									
 									<div class="btn-group">
-										<a href="{{url('productattribute/'.Crypt::encrypt($row->id).'/edit')}}" class="btn btn-xs btn-info mr-1" title="View">
+										<a href="{{route('productattribute.edit',Crypt::encrypt($row->id))}}" class="btn btn-xs btn-info mr-1" title="View">
 											<i class="fa fa-edit"></i>
 										</a>
 										<!-- <a href="{{url('productattribute/'.Crypt::encrypt($row->id.'/show'))}}" class="btn btn-xs btn-success" title="View">

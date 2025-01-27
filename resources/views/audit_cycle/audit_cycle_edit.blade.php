@@ -13,7 +13,7 @@ Create New
     </div>
 
     <div class="card-body card-block">
-        <form method="put" action="{{ route('edit-audit-cycle', ['id' => $cycle->id]) }}" class="kt-form">
+        <form method="POST" action="{{ route('edit-audit-cycle', ['id' => $cycle->id]) }}" class="kt-form">
             @csrf
             @method('PUT')
 

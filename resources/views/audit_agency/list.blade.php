@@ -55,7 +55,7 @@
                                 </td> -->
                                 <td nowrap>
                                     <div class="btn-group">
-                                        <a href="{{url('audit_agency/'.Crypt::encrypt($row->id).'/edit')}}" class="btn btn-xs btn-info mr-1" title="View">
+                                        <a href="{{route('audit_agency.edit',Crypt::encrypt($row->id))}}" class="btn btn-xs btn-info mr-1" title="View">
                                         <i class="fa fa-edit"></i>
                                         </a>
                                         

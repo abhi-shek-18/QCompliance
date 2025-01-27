@@ -3388,31 +3388,34 @@ class AuditController extends Controller
         if ($request->isMethod('put')) {
             // Validation
             $request->validate([
-                'cycle_name' => 'required|string|max:255|unique:audit_cycles,name,' . $id,
+                'cycle_name' => 'required|string|max:255|unique:audit_cycles,name,' . $id . ',id',
             ]);
     
             // Find the cycle
             $cycle = AuditCycle::find($id);
-    
             if ($cycle) {
                 $cycle->name = $request->cycle_name;
                 $cycle->created_by = Auth::id();
+    
+                // dd($cycle->toArray()); // Check the data before saving
+    
                 $cycle->save();
     
-                return redirect()->route('list-audit-cycle')->with('status', __('Cycle updated successfully.'));
+                return redirect('list-audit-cycle')->with('status', __('Cycle updated successfully.'));
             } else {
-                return redirect()->route('list-audit-cycle')->with('status', __('Cycle not found.'));
+                return redirect('list-audit-cycle')->with('status', __('Cycle not found.'));
             }
         }
     
         // Handle GET request to show the form
         $cycle = AuditCycle::find($id);
         if (!$cycle) {
-            return redirect()->route('list-audit-cycle')->with('status', __('Cycle not found.'));
+            return redirect('list-audit-cycle')->with('status', __('Cycle not found.'));
         }
     
         return view('audit_cycle.audit_cycle_edit', compact('cycle'));
     }
+    
     
 
     public function toggleStatus(Request $request)

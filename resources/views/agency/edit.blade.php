@@ -19,8 +19,9 @@ Edit Agency
                         The agency you are trying to edit does not exist.
                     </div>
                 @else
-                <form method="put" action="{{ route('agency/' . Crypt::encrypt($data->id)) }}" class="kt-form">
+                <form method="post" action="{{ route('agency/' . Crypt::encrypt($data->id)) }}" class="kt-form">
                 @csrf
+                @method('put')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

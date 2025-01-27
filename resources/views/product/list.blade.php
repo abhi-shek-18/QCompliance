@@ -68,11 +68,12 @@ Users
 
 									
 
-									<a href="{{url('product/'.Crypt::encrypt($row->id).'/edit')}}" class="btn btn-xs btn-info" title="View">
-										<i class="fa fa-edit"></i>
-                                    </a>
+								<a href="{{ route('product.edit', Crypt::encrypt($row->id)) }}" class="btn btn-xs btn-info" title="Edit">
+									<i class="fa fa-edit"></i>
+								</a>
 
-                                    <a href="{{url('product/'.Crypt::encrypt($row->id))}}" class="btn btn-xs btn-danger" title="View">
+
+                                    <a href="{{route('product.destroy',Crypt::encrypt($row->id))}}" class="btn btn-xs btn-danger" title="View">
 										<i class="fa fa-trash"></i>
 									</a>
 

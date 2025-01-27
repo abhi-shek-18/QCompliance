@@ -65,7 +65,7 @@ Users
 								<th scope="col">#</th>
 								<th scope="col">Name</th>
 								<th scope="col">Created At</th>
-								<th scope="col">Status</th>
+								<!-- <th scope="col">Status</th> -->
 								<th scope="col">Actions</th>
 							</tr>
 						</thead>
@@ -75,7 +75,7 @@ Users
 									<td>{{ $loop->iteration }}</td>
 									<td>{{ $row->name }}</td>
 									<td>{{ $row->created_at->format('Y-m-d h:i:s') }}</td>
-									<td>
+									<!-- <td>
 										<span id="status-container-{{ $row->id }}">
 											@if($row->status == '0' || $row->status == '2')
 												<button class="toggle-status btn btn-success" data-id="{{ $row->id }}"
@@ -85,7 +85,7 @@ Users
 													data-status="2">Deactivate</button>
 											@endif
 										</span>
-									</td>
+									</td> -->
 									<td>
                                     <a href="{{ route('edit-audit-cycle', ['id' => $row->id]) }}"class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit">
 											<i class="fa fa-edit"></i>

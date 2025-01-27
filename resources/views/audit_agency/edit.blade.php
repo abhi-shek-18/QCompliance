@@ -22,7 +22,7 @@
                 <strong>Edit Audit Agency</strong> form
             </div>
             <div class="card-body card-block">
-                <form method="put" action="{{ route('audit_agency.update',['audit_agency' => $data->id]) }}" class="kt-form">
+                <form method="post" action="{{ route('audit_agency.update',['audit_agency' => $data->id]) }}" class="kt-form">
                     @csrf
                     @method('PUT')
 

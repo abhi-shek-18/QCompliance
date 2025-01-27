@@ -29,6 +29,7 @@
 
         <form method="post" action="{{ route( 'location.update') }}" class="form-horizontal">
         @csrf
+        @method('put')
             <div class="row">
 
             <div class="col col-md-4">

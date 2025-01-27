@@ -14,9 +14,9 @@
             <strong>Edit Product Attributes</strong> form
         </div>
         <div class="card-body card-block">
-        <form method="PUT" action="{{ route('productattribute/'.Crypt::encrypt($data->id)) }}" class="kt-form">
+        <form method="POST" action="{{ route('productattribute.update',Crypt::encrypt($data->id)) }}" class="kt-form">
         @csrf
-
+        @method('PUT')
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
