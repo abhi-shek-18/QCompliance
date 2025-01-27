@@ -35,25 +35,42 @@ Users
 
 			<div class="card">
 
-				<div class="card-header">
+				<divspan class="card-header">
 
 					<strong class="card-title">
-						<h1>User List</h1>
+						<h3>All Users List</h3>
 					</strong>
 					<hr>
+			
 					<span class="d-flex justify-content-end">
-						<a href="{{ route('User.create') }}" class="btn btn-primary">
-							<i class="fa fa-plus"></i> Add User
-						</a>
+					
 					</span>
 
-
-				</div>
-
-
-
+				</divspan>
 
 				<div class="card-body">
+				<div class="d-flex justify-content-end">
+							<a class="btn btn-primary btn-xs float-right" style="margin-right: 10px"
+							href="{{route('userUpload')}}">Import Users (Create bulk user)</a>
+
+						<a class="btn btn-primary btn-xs float-right" style="margin-right: 10px"
+							href="{{route('excelDownloadUser')}}" target="_blank">Export Users</a>
+						<a class="btn btn-primary btn-xs float-right" style="margin-right: 10px"
+							href="{{route('bulkDeactivate')}}">De-Activate
+							user(Bulk)</a>
+						<a href="{{ route('User.create') }}" class="btn btn-primary btn-xs float-right"style="margin-right: 10px">
+							<i class="fa fa-plus"></i> Add New User
+						</a>
+						</div>
+				<span class="d-flex justify-content-between mb-3">
+						<div id="table-search-container">
+							<label>
+								Search:
+								<input type="text" id="table-search" class="form-control form-control-sm"
+									placeholder="Search users...">
+							</label>
+							</div>
+					</span>
 					<table class="table table-striped table-bordered table-hover table-checkable" id="kt_table_1">
 						<thead>
 							<tr>
@@ -115,15 +132,41 @@ Users
 						{{ $data->links('pagination::bootstrap-4') }}
 					</div>
 				</div>
-
-
 			</div>
-
 		</div>
-
 	</div>
-
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('table-search');
+        const table = document.getElementById('kt_table_1');
+
+        searchInput.addEventListener('keyup', function () {
+            const filter = searchInput.value.toLowerCase();
+            const rows = table.getElementsByTagName('tr');
+
+            // Loop through table rows and hide/show based on search
+            for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+                const cells = rows[i].getElementsByTagName('td');
+                let match = false;
+
+                // Check each cell in the row
+                for (let j = 0; j < cells.length; j++) {
+                    const cellValue = cells[j].textContent || cells[j].innerText;
+                    if (cellValue.toLowerCase().includes(filter)) {
+                        match = true;
+                        break;
+                    }
+                }
+
+                // Show the row if there's a match, otherwise hide it
+                rows[i].style.display = match ? '' : 'none';
+            }
+        });
+    });
+</script>
+
+
 
 @endsection
 
@@ -146,6 +189,7 @@ Users
 	})
 
 </script>
+
 
 <script type="text/javascript">
 	function block_user(id) {

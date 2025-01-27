@@ -9,6 +9,7 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                                @role('Client|Admin|Super Admin')
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-user"></i></span>
@@ -32,7 +33,8 @@
                                         </li>
                                     </ul>
                                     </li>
-
+                                @endrole
+                                @role('Super Admin')
                                     <li class="pcoded-hasmenu">
                                         <a href="javascript:void(0)">
                                             <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
@@ -40,10 +42,17 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                         <ul class="pcoded-submenu">
-                                            <!-- Submenu items for Client Management can go here -->
+                                        <li class=" ">
+                                            <a href="{{route('Client.list')}}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Client List</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
                                         </ul>
                                     </li>
-
+                                    @endrole
+                                    @role('Super Admin|Client')        
                                     <li class="pcoded-hasmenu">
                                         <a href="javascript:void(0)">
                                             <span class="pcoded-micon"><i class="ti-briefcase"></i></span>
@@ -52,9 +61,24 @@
                                         </a>
                                         <ul class="pcoded-submenu">
                                             <!-- Submenu items for Audit Agency can go here -->
+                                            <li class="">
+                                            <a href="{{route('audit_agency.create')}}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Create Audit Agency</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{route('audit_agency.index')}}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Audit Agency List</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
                                         </ul>
                                     </li>
-
+                                  
+                                  
                                     <li class="pcoded-hasmenu">
                                         <a href="javascript:void(0)">
                                             <span class="pcoded-micon"><i class="ti-clipboard"></i></span>
@@ -65,7 +89,7 @@
                                             <!-- Submenu items for Audit Allocation can go here -->
                                         </ul>
                                     </li>
-
+                                    
                                     <li class="pcoded-hasmenu">
                                         <a href="javascript:void(0)">
                                             <span class="pcoded-micon"><i class="ti-location-pin"></i></span>
@@ -99,6 +123,22 @@
                                         </a>
                                         <ul class="pcoded-submenu">
                                             <!-- Submenu items for Audit Cycle can go here -->
+                                             <li>
+                                            <a href="{{ route('createCycle') }}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Create Audit
+                                                Cycle</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    
+                                        <li class=" ">
+                                            <a href="{{ route('listCycle') }}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Audit Cycle List</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
                                         </ul>
                                     </li>
 
@@ -146,15 +186,33 @@
 
                                     <li class="pcoded-hasmenu">
                                         <a href="javascript:void(0)">
+
                                             <span class="pcoded-micon"><i class="ti-settings"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Agency</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                         <ul class="pcoded-submenu">
                                             <!-- Submenu items for Agency can go here -->
+                                            <li class="">
+                                            <a href="{{route('agency.create')}}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Create
+                                                Agency</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    
+                                        <li class=" ">
+                                            <a href="{{route('agency.index')}}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Agency List</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
                                         </ul>
                                     </li>
-
+                                    @endrole 
+                                @role("Quality Auditor|Client|Admin|Super Admin")
                                     <li class="pcoded-hasmenu">
                                         <a href="javascript:void(0)">
                                             <span class="pcoded-micon"><i class="ti-list"></i></span>
@@ -162,11 +220,11 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                         <ul class="pcoded-submenu">
-                                            <!-- Submenu items for Audit List can go here -->
+                                            <!--Submenu items for Audit List can go here-->
                                         </ul>
                                     </li>
-
-                                  
+                                @endrole
+                          
                                 </ul>
 
                             

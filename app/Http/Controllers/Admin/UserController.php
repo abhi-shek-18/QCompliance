@@ -74,6 +74,18 @@ class UserController extends Controller
         // dd($data);
         return view("admin.User.index", ["data" => $data]);
     }
+
+    public function showClient(){
+        $query = User::with('roles') // Load the related roles
+        ->where('active_status', 0) // Filter by active_status
+        ->whereHas('roles', function ($query) {
+            $query->where('name', 'Client'); // Filter by role name
+        })
+        ->paginate(10); 
+        $data=$query;
+
+        return view("Client.User.index", ["data" => $data]);
+    }
     
 
     public function create()
@@ -120,8 +132,8 @@ class UserController extends Controller
         if ($validator->fails()) {
             return redirect()
                 ->back()
-                ->with("error", [$validator->errors()->all()])
-                ->withInput();
+                ->withErrors($validator) 
+                ->withInput(); 
         } else {
             $data = new User();
 
@@ -131,6 +143,7 @@ class UserController extends Controller
 
             $data->mobile = $request->mobile;
             $data->created_by = Auth::user()->email;
+            $data->parent_id= Auth::user()->id;
             $data->audit_agency_id = Auth::user()->id;
             if ($request->auto == "automatic") {
                 $password = Str::random(8);
@@ -143,9 +156,8 @@ class UserController extends Controller
 
             $data->save();
 
-            $roles = $request["role"]; //Retrieving the roles field
+            $roles = $request["role"]; 
             // dd($roles);
-            //Checking if a role was selected
 
             if (isset($roles)) {
                 foreach ($roles as $role) {
@@ -490,6 +502,8 @@ public function show($user_id)
  
     return view("admin.User.show", ["data" => $data, 'rdata' => $rdata]);
 }
+
+
 
     
 }
